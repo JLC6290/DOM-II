@@ -12,24 +12,26 @@
 //   window.addEventListener('click', clickEventHandler)
 
 
-
+// hide paragraphs and images
 let paragraphs = document.querySelectorAll("p");
-paragraphs.forEach(function (item){
-    item.style.visibility = "hidden";
-});
-let images = document.querySelectorAll("img");
-images.forEach(function (item){
-    item.style.visibility = "hidden";});
+// let images = document.querySelectorAll("img");
+// images.forEach(function (item){
+//     item.style.visibility = "hidden";
+// });
 
-document.querySelector("p").addEventListener('mouseover', showText);
-function showText(event) {
-    event.style.visibility = "visible";
-}
+// show paragraphs on mouseover
+// function showText(event) {
+//     event.target.style.visibility = "visible";
+// }
+// paragraphs.forEach(function (item) {
+//     item.style.visibility = "hidden";
+//     item.addEventListener('mouseover', showText);
+// })
 
 function redBackground(event) {
     document.querySelector("body").style.backgroundColor = 'red';
 }
-document.querySelector("a").addEventListener('mouseover', redBackground);
+document.querySelector("nav").addEventListener('mouseover', redBackground);
 
 document.querySelector('.intro img').addEventListener('mousedown', (event) => {
     event.target.style.visibility = 'visible';
@@ -43,3 +45,28 @@ function clearBackground(event) {
     document.querySelector("body").style.backgroundColor = 'white';
 }
 document.querySelector("header").addEventListener('click', clearBackground);
+
+function colorText(event) {
+    event.target.style.color = 'green';
+    console.log("text is green");
+}
+function revertText(event) {
+    event.target.style.color = 'black';
+    console.log("text is black");
+}
+paragraphs.forEach(function (item) {
+    item.addEventListener('mouseover', colorText);
+    item.addEventListener('mouseleave', revertText);
+})
+
+function changeFont(event) {
+    event.target.style.fontFamily = "arial";
+}
+function revertFont(event) {
+    event.target.style.fontFamily = "Roboto";
+}
+
+paragraphs.forEach(function (item) {
+    item.addEventListener('click', changeFont);
+    item.addEventListener('dblclick', revertFont);
+})
